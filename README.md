@@ -2,6 +2,7 @@
 
 ## 觉得整理的不错的朋友，star一下哟，(*￣︶￣)
 ## 欢迎大家提问题交流
+### 参考视频：[https://www.bilibili.com/video/av22613028](https://www.bilibili.com/video/av22613028 "尚硅谷SpringCloud")
 
 ![](images/springcloud架构图.png)
 
