@@ -654,6 +654,7 @@ public class DeptConsumer80_App {
 }
 ```
 
+
 - ConfigBean配置中增加@LoadBalance注解，开启客户端负载均衡
 
   ```java
