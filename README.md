@@ -15,7 +15,7 @@ spring boot版本：1.5.19.RELEASE
 ### 1、父工程搭建
 
 - 新建 microservicecloud 父工程
-
+ 
   pom文件
 
 ```xml
