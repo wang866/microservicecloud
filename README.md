@@ -642,18 +642,17 @@ eureka:
       register-with-eureka: false
   ```
 
-- 主启动类中增加注解@EnableEurekaClient，
+- 主启动类中增加注解@EnableEurekaClient
+```java
+@SpringBootApplication
+@EnableEurekaClient
+public class DeptConsumer80_App {
 
-  ```java
-	@SpringBootApplication
-	@EnableEurekaClient
-	public class DeptConsumer80_App {
-	
-	    public static void main(String[] args) {
-	        SpringApplication.run(DeptConsumer80_App.class, args);
-	    }
-	}
-  ```
+    public static void main(String[] args) {
+        SpringApplication.run(DeptConsumer80_App.class, args);
+    }
+}
+```
 
 - ConfigBean配置中增加@LoadBalance注解，开启客户端负载均衡
 
