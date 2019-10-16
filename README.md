@@ -1718,4 +1718,4 @@ public class ConfigClientController {
 
 config服务端配置测试OK，我们可以和config+github进行配置修改并获得内容
 
-做一个wureka服务+一个dept访问的微服务，将两个微服务的配置统一由github获得实现统一配置，分布式管理，完成多环境变更。
+做一个eureka服务+一个dept访问的微服务，将两个微服务的配置统一由github获得实现统一配置，分布式管理，完成多环境变更。
