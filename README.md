@@ -645,14 +645,14 @@ eureka:
 - 主启动类中增加注解@EnableEurekaClient，
 
   ```java
-@SpringBootApplication
-@EnableEurekaClient
-public class DeptConsumer80_App {
-
-    public static void main(String[] args) {
-        SpringApplication.run(DeptConsumer80_App.class, args);
-    }
-}
+	@SpringBootApplication
+	@EnableEurekaClient
+	public class DeptConsumer80_App {
+	
+	    public static void main(String[] args) {
+	        SpringApplication.run(DeptConsumer80_App.class, args);
+	    }
+	}
   ```
 
 - ConfigBean配置中增加@LoadBalance注解，开启客户端负载均衡
@@ -1005,32 +1005,32 @@ Hystrix是一个用于处理分布式系统的延迟和容错的开源库，在�
 - 根据已有的com.wzq.springcloud.service.DeptClientService接口，新建一个实现FallBackFactory接口的类
 
 ```java
-//@Component 不要忘记添加
-//主业务与熔断方法解耦
-@Component
-@Component
-public class DeptClientServiceFallbackFactory implements FallbackFactory<DeptClientService> {
-    @Override
-    public DeptClientService create(Throwable throwable) {
-        return new DeptClientService() {
-            @Override
-            public boolean add(Dept dept) {
-                return false;
-            }
-
-            @Override
-            public Dept get(Long id) {
-                return new Dept().setDeptno(id).setDname("该id没有对应的部门信息，consumer提供的降级服务，此刻provider服务已关闭")
-                        .setDb_source("this is no database");
-            }
-
-            @Override
-            public List<Dept> list() {
-                return null;
-            }
-        };
-    }
-}
+	//@Component 不要忘记添加
+	//主业务与熔断方法解耦
+	@Component
+	@Component
+	public class DeptClientServiceFallbackFactory implements FallbackFactory<DeptClientService> {
+	    @Override
+	    public DeptClientService create(Throwable throwable) {
+	        return new DeptClientService() {
+	            @Override
+	            public boolean add(Dept dept) {
+	                return false;
+	            }
+	
+	            @Override
+	            public Dept get(Long id) {
+	                return new Dept().setDeptno(id).setDname("该id没有对应的部门信息，consumer提供的降级服务，此刻provider服务已关闭")
+	                        .setDb_source("this is no database");
+	            }
+	
+	            @Override
+	            public List<Dept> list() {
+	                return null;
+	            }
+	        };
+	    }
+	}
 ```
 
 - 在DeptClientService中的FeignClient注解中添加FallBackfactory属性值
@@ -1062,7 +1062,7 @@ public class DeptClientServiceFallbackFactory implements FallbackFactory<DeptCli
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+	<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
@@ -1141,7 +1141,7 @@ public class DeptClientServiceFallbackFactory implements FallbackFactory<DeptCli
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
     </dependencies>
-</project>
+	</project>
   ```
 
 - yml文件
@@ -1154,14 +1154,14 @@ public class DeptClientServiceFallbackFactory implements FallbackFactory<DeptCli
 - 主启动类
 
   ```java
-  @SpringBootApplication
-@EnableHystrixDashboard
-public class DeptConsumer_Dashboard_App {
-
-    public static void main(String[] args) {
-        SpringApplication.run(DeptConsumer_Dashboard_App.class, args);
-    }
-}
+    @SpringBootApplication
+	@EnableHystrixDashboard
+	public class DeptConsumer_Dashboard_App {
+	
+	    public static void main(String[] args) {
+	        SpringApplication.run(DeptConsumer_Dashboard_App.class, args);
+	    }
+	}
   ```
 
 - 所有provider微服务提供类（8001、8002、8002）都需要监控依赖配置
@@ -1207,7 +1207,7 @@ Zuul与Eureka进行整合，将==Zuul自身注册为Eureka==服务治理下的�
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+	<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
@@ -1273,14 +1273,14 @@ Zuul与Eureka进行整合，将==Zuul自身注册为Eureka==服务治理下的�
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
     </dependencies>
-</project>
+	</project>
   ```
 
 - yml文件
 
   ```yml
     server:
-  	port: 9527
+	  port: 9527
 	spring:
 	  application:
 	    name: microservicecloud-zuul-gateway
@@ -1309,14 +1309,14 @@ Zuul与Eureka进行整合，将==Zuul自身注册为Eureka==服务治理下的�
 - 主启动类
 
   ```java
-  @SpringBootApplication
-@EnableZuulProxy
-public class Zuul_9527_StartSpringCloudApp {
-
-    public static void main(String[] args) {
-        SpringApplication.run(Zuul_9527_StartSpringCloudApp.class, args);
-    }
-}
+	@SpringBootApplication
+	@EnableZuulProxy
+	public class Zuul_9527_StartSpringCloudApp {
+	
+	    public static void main(String[] args) {
+	        SpringApplication.run(Zuul_9527_StartSpringCloudApp.class, args);
+	    }
+	}
   ```
 
 ### 3、测试
@@ -1420,7 +1420,7 @@ git clone https://github.com/wangzq95928/microservicecloud-config.git
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+	<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
@@ -1487,7 +1487,7 @@ git clone https://github.com/wangzq95928/microservicecloud-config.git
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
     </dependencies>
-</project>
+	</project>
   ```
 
 - yml文件
@@ -1509,14 +1509,14 @@ git clone https://github.com/wangzq95928/microservicecloud-config.git
 - 主启动类
 
   ```java
-  @SpringBootApplication
-@EnableConfigServer
-public class Config_3344_StartSpringCloudApp {
-
-    public static void main(String[] args) {
-        SpringApplication.run(Config_3344_StartSpringCloudApp.class, args);
-    }
-}
+	@SpringBootApplication
+	@EnableConfigServer
+	public class Config_3344_StartSpringCloudApp {
+	
+	    public static void main(String[] args) {
+	        SpringApplication.run(Config_3344_StartSpringCloudApp.class, args);
+	    }
+	}
   ```
 
 - 修改host文件增加映射
@@ -1571,7 +1571,7 @@ eureka:
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+	<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
@@ -1636,19 +1636,19 @@ eureka:
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
     </dependencies>
-</project>
+	</project>
   ```
 
 - 主启动类
 
   ```java
-  @SpringBootApplication
-public class ConfigClient_3355_StartSpringCloudApp {
-
-    public static void main(String[] args) {
-        SpringApplication.run(ConfigClient_3355_StartSpringCloudApp.class, args);
-    }
-}
+	@SpringBootApplication
+	public class ConfigClient_3355_StartSpringCloudApp {
+	
+	    public static void main(String[] args) {
+	        SpringApplication.run(ConfigClient_3355_StartSpringCloudApp.class, args);
+	    }
+	}
   ```
 
 - yml文件
@@ -1688,26 +1688,26 @@ public class ConfigClient_3355_StartSpringCloudApp {
 - 新建rest类，验证是否能从Github上读取配置
 
   ```java
-  @RestController
-public class ConfigClientController {
-    @Value("${spring.application.name}")
-    private String applicationName;
-    @Value("${eureka.client.service-url.defaultZone}")
-    private String eurekaServers;
-    @Value("${server.port}")
-    private String port;
-
-    @GetMapping("/config")
-    public String getConfig(){
-
-        System.out.println("applicationName:"+this.applicationName
-                +"eurekaServers:"+this.eurekaServers
-                +"port:"+this.port);
-        return "applicationName:"+this.applicationName
-                +"eurekaServers:"+this.eurekaServers
-                +"port:"+this.port;
-    }
-}
+	@RestController
+	public class ConfigClientController {
+	    @Value("${spring.application.name}")
+	    private String applicationName;
+	    @Value("${eureka.client.service-url.defaultZone}")
+	    private String eurekaServers;
+	    @Value("${server.port}")
+	    private String port;
+	
+	    @GetMapping("/config")
+	    public String getConfig(){
+	
+	        System.out.println("applicationName:"+this.applicationName
+	                +"eurekaServers:"+this.eurekaServers
+	                +"port:"+this.port);
+	        return "applicationName:"+this.applicationName
+	                +"eurekaServers:"+this.eurekaServers
+	                +"port:"+this.port;
+	    }
+	}
   ```
 
 - 测试
