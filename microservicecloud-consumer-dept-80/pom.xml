@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>部门微服务消费者</artifactId>
+    <artifactId>microservicecloud-consumer-dept-80</artifactId>
 
     <dependencies>
         <dependency>
@@ -46,5 +46,21 @@
 
     </dependencies>
 
+    <build>
+        <finalName>microservicecloud-consumer-dept-80</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

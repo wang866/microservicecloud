@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>microservicecloud-provider-dept-8002/服务提供者8002</artifactId>
+    <artifactId>microservicecloud-provider-dept-8002</artifactId>
 
     <dependencies>
         <dependency>
@@ -75,4 +75,20 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>microservicecloud-provider-dept-8002</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

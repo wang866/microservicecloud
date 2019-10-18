@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Eureka注册中心-7001</artifactId>
+    <artifactId>microservicecloud-eureka-7001</artifactId>
     <dependencies>
         <!--eureka-server 服务端-->
         <dependency>
@@ -27,5 +27,22 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <finalName>microservicecloud-eureka-7001</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
